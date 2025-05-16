@@ -33,7 +33,7 @@ class PostController extends Controller
         //
         $data = $request->validate([
             'title' => 'required|string|max:300',
-            'image' => 'required|image|mimes:jpeg,png,webp|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,webp',
             'body' => 'required|string|max:2000',
         ]);
 
@@ -72,7 +72,7 @@ public function update(Request $request, Post $post)
 {
     $data = $request->validate([
         'title' => 'required|string|max:300',
-        'image' => 'nullable|image|mimes:jpeg,png,webp|max:2048',
+        'image' => 'nullable|image|mimes:jpeg,png,webp',
         'body' => 'required|string|max:2000',
     ]);
 

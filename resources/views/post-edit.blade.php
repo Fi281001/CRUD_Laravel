@@ -14,7 +14,7 @@
         background-color: #f8f9fa;
       }
       .form-container {
-        max-width: 800px;
+        max-width: 500px;
         margin: 30px auto;
         padding: 20px;
         background: white;
@@ -65,7 +65,7 @@
             
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
               <button type="submit" class="btn btn-primary me-md-2">Save Edit</button>
-              <a href="{{ url()->previous() }}" class="btn btn-danger">Cancel</a>
+              <a href="{{ route('post.create') }}" class="btn btn-danger">Cancel</a>
             </div>
           </form>
         </div>

@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
+    @php use Illuminate\Support\Str; @endphp
     <!-- Thẻ meta -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,6 +10,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <title>CRUD Laravel</title>
+    <style>  
+    .alert-animated {
+        animation: fadeIn 0.5s;
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
   </head>
   <body>
     <section>
@@ -16,13 +26,18 @@
           <div class="row">
             <div class="col-md-5">
                @if (session()->has('success'))
-                    <div class="alert alert-success">
-                        {{ 'Tạo thành công' }}
+                    <div class="alert alert-success alert-animated">
+                        {{ 'Create Success' }}
                     </div>
                 @endif
                  @if (session()->has('success_delete'))
-                    <div class="alert alert-success">
-                        {{ 'Xóa thành công' }}
+                    <div class="alert alert-danger alert-animated">
+                        {{ 'Delete Success' }}
+                    </div>
+                @endif
+                 @if (session()->has('success_update'))
+                    <div class="alert alert-info alert-animated">
+                        {{ 'Update Success' }}
                     </div>
                 @endif
               <div class="card p-3">
@@ -52,7 +67,7 @@
                       @enderror
                   </div>
                   <div class="mb-3">
-                      <button type="submit" class="btn btn-primary">Submit</button>
+                      <button type="submit" class="btn btn-primary w-100">Add Post</button>
                   </div>
                 </form> <!-- Thẻ đóng này bị thiếu -->
               </div>
@@ -74,8 +89,8 @@
                     <tr>
                     <th scope="row">{{$post->id }}</th>
                     <td>{{$post->title }}</td>
-                    <td>{{$post->body}}</td>
-                    <td><img style="width:100px; height:50px" src="{{ asset('images/'.$post->image) }}" alt=""/></td>
+                    <td>{{ Str::limit($post->body, 20, '...') }}</td>
+                    <td><img style="width:100px; height:50px" src="{{ asset('images/' . $post->image) }}" alt=""/></td>
                     <td>
                         <a href="{{ route('post.edit',$post->id) }}" class="btn btn-warning">Edit</a>
                      </td>
