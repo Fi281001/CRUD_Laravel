@@ -75,7 +75,7 @@
                     <th scope="row">{{$post->id }}</th>
                     <td>{{$post->title }}</td>
                     <td>{{$post->body}}</td>
-                    <td><img style="width:100px" src="{{ asset('images/'.$post->image) }}" alt=""/></td>
+                    <td><img style="width:100px; height:50px" src="{{ asset('images/'.$post->image) }}" alt=""/></td>
                     <td>
                         <a href="{{ route('post.edit',$post->id) }}" class="btn btn-warning">Edit</a>
                      </td>
